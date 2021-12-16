@@ -6,18 +6,17 @@ This is to be a personal trail hiking application that allows you to add a hike 
 
 ## Primary Objectives
 
-- Add a _hiker_.
-- Add _trails_.
-- Get all of this hikers trails
-- Change a trails info.
+- Create a _proHiker_ (admin).
+- Add a _trail_.
+- Get _all_ trails (proHiker- all hikers trails).
+- Delete _any_ trail (proHiker- any hikers trails).
 
 ## Secondary Objectives
 
+- Get all of a hiker's trails
+- Change a trails info.
 - Get hikers trails by state.
 - Get hikers trails by difficulty.
-- Add _proHiker_ (admin).
-- Get _all_ trails (proHiker- all hikers trails).
-- Delete _any_ trail (proHiker- any hikers trails).
 
 ## Bonus Objectives
 
@@ -31,27 +30,6 @@ _I have not seen any apps or web pages that allow you to add, delete, or share h
 
 This is for _Primary_ and _Secondary_ Objectives.
 
-### Hiker
-
-```json
-{
-  "username": "riversnake",
-  "password": "trailhiker"
-}
-```
-
-```json
-{
-  "trail id": "1",
-  "trail name": "grand canyon trail",
-  "state": "New Jersey",
-  "distance": "3.2 miles",
-  "difficulty": "moderate",
-  "terrain": "river bed",
-  "notes": "saw 2 water snakes, 1 squirrel. Hike was beautiful."
-}
-```
-
 ### proHiker
 
 ```json
@@ -63,6 +41,29 @@ This is for _Primary_ and _Secondary_ Objectives.
 
 The password will be encrypted.
 
+### Hiker
+
+```json
+{
+  "username": "Jason",
+  "password": "trailhiker",
+  "trails": []
+}
+```
+
+### Trails
+
+```json
+{
+  "trail name": "grand canyon trail",
+  "state": "New Jersey",
+  "distance": "3.2 miles",
+  "difficulty": "moderate",
+  "terrain": "river bed",
+  "notes": "saw 2 water snakes, 1 squirrel. Hike was beautiful."
+}
+```
+
 ## _Routes_
 
 All routes will have '/api' preface.
@@ -73,6 +74,7 @@ All routes will be JWT protected after proHiker authentication.
 `/hiker`
 
 `POST` - `/register`
+`POST` - `/authenticate`
 As well as standard 4 api routes.
 
 ### proHiker
@@ -82,6 +84,12 @@ As well as standard 4 api routes.
 `POST` - `/register`
 `POST` - `/authenticate`
 As well as standard 4 api routes.
+
+### Trails
+
+`/trails`
+
+Standard 4 api routes.
 
 ## _Data_
 
