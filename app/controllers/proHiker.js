@@ -6,7 +6,7 @@ import config from "../config.js";
 const proHiker = client.db(config.db.name).collection("proHiker");
 
 export default {
-  async create(username, password) {
+  async create(username, password, role) {
     // Check if proHiker is already in the database:
 
     const existingProHiker = await proHiker.findOne({ username });
@@ -20,7 +20,7 @@ export default {
     const hash = await bcrypt.hash(password, 10);
 
     // Then add to DB
-    return proHiker.insertOne({ username, password: hash });
+    return proHiker.insertOne({ username, password: hash, role });
   },
 
   // Check to see if username exists in DB
