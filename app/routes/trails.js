@@ -18,11 +18,26 @@ router.post("/all", async ({ isAuth }, res) => {
     res.status(401).json({ message: "Access Denied" });
   }
 });
+// Add a new trail
+router.post("/", async ({ isAuth, body }, res) => {
     try {
-      const { insertedId: id } = await trailsController.create(req.body);
-      res.status(201).json({ id });
+    if (isAuth?.role === "PRO") {
+      const trail = new Trail(body);
+      const errors = trail.validate();
+      if (errors.length) {
+        throw new Error(errors.join("\n"));
+      }
+
+      const resp = await trailsController.create(body);
+
+      res.status(201).json(resp);
+    } else {
+      throw new Error("You are not authorized to perform this action");
+    }
     } catch ({ message }) {
       res.status(400).json({ message });
+  }
+});
     }
   } else {
     res.status(401).json({ message: "Access Denied" });
