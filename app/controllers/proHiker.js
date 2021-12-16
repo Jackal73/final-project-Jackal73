@@ -27,6 +27,11 @@ export default {
   async show({ username, password }) {
     const existingUser = await proHiker.findOne({ username });
 
+    // If existingUser does not exist in DB - error
+    if (!existingUser) {
+      throw new Error("Access Denied");
+    }
+
     const comparison = await bcrypt.compare(password, existingUser.password);
 
     // If the username is not found, error
