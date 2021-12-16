@@ -30,4 +30,13 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/login", async (req, res) => {
+  try {
+    const token = await proHikerController.show(req.body);
+    res.status(200).send(token);
+  } catch ({ message }) {
+    res.status(400).json({ message });
+  }
+});
+
 export default router;
