@@ -10,7 +10,7 @@ export default {
   },
   // Add encryption object
   encryption: {
-    expiresIn: process.env.EXPIRES_IN || "7d", // How long till expires
+    expiresIn: process.env.EXPIRES_IN || "2d", // How long till expires
     saltRounds: process.env.SALT_ROUNDS || 10, // adds 10 random characters
     secret: process.env.ENCRYPTION_SECRET || "secret", // secret word
   },
