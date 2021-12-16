@@ -6,17 +6,16 @@ This is to be a personal trail hiking application that allows you to add a hike 
 
 ## Primary Objectives
 
-- Create a _proHiker_ (admin).
+- Create a _Pro_ (admin).
 - Add a _trail_.
-- Get _all_ trails (proHiker- all hikers trails).
-- Delete _any_ trail (proHiker- any hikers trails).
+- Get _all_ trails (Pro- all trails).
+- Delete _any_ trail (Pro- any trails).
 
 ## Secondary Objectives
 
-- Get all of a hiker's trails
 - Change a trails info.
-- Get hikers trails by state.
-- Get hikers trails by difficulty.
+- Get trails by Id.
+- Update trails by Id.
 
 ## Bonus Objectives
 
@@ -30,26 +29,17 @@ _I have not seen any apps or web pages that allow you to add, delete, or share h
 
 This is for _Primary_ and _Secondary_ Objectives.
 
-### proHiker
-
-```json
-{
-  "username": "prohiker",
-  "password": "allknowing"
-}
-```
-
-The password will be encrypted.
-
-### Hiker
+### Pro
 
 ```json
 {
   "username": "Jason",
-  "password": "trailhiker",
+  "password": "yoshi1988",
   "trails": []
 }
 ```
+
+The password will be encrypted.
 
 ### Trails
 
@@ -63,36 +53,43 @@ The password will be encrypted.
 }
 ```
 
+Sample for inputs - add info
+
+```json
+{
+  "trailName": "",
+  "state": "",
+  "distance": "",
+  "difficulty": "",
+  "terrain": ""
+}
+```
+
 ## _Routes_
 
 All routes will have '/api' preface.
 All routes will be JWT protected after proHiker authentication.
 
-### Hiker
+### {Pro}
 
-`/hiker`
-
-`POST` - `/register`
-`POST` - `/authenticate`
-As well as standard 4 api routes.
-
-### proHiker
-
-`/proHiker`
+`/pro`
 
 `POST` - `/register`
-`POST` - `/authenticate`
-As well as standard 4 api routes.
+`POST` - `/login`
 
 ### Trails
 
 `/trails`
 
-Standard 4 api routes.
+`POST` - `trails/all`
+`POST` - `trails`
+`POST` - `trails/:id`
+`PUT` - `trails/:id`
+`DELETE` - trails/:id
 
 ## _Data_
 
-There will be a sample data set (in DB) to use so I have a few hikes to mess with on insomnia. Then from that, I can GET, POST, PUT, or DELETE trails for the assignment (in **_Insomnia_**).
+There will be a sample data set (in DB) to use so I have a few trails to mess with on insomnia. Then from that, I can GET, POST, PUT, or DELETE trails for the assignment (in **_Insomnia_**).
 
 ## External APIs
 
