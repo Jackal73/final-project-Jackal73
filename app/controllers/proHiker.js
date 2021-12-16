@@ -24,7 +24,7 @@ export default {
   },
 
   // Check to see if username exists in DB
-  async show(username, password) {
+  async show({ username, password }) {
     const existingUser = await proHiker.findOne({ username });
 
     const comparison = await bcrypt.compare(password, existingUser.password);
@@ -44,8 +44,13 @@ export default {
     }
 
     // If they match, get a signed Json Web Token
-    return jwt.sign({ username }, config.encryption.secret, {
-      expiresIn: config.encryption.expiresIn,
-    });
+    return jwt.sign(
+      { username, role: existingUser.role },
+
+      config.encryption.secret,
+      {
+        expiresIn: config.encryption.expiresIn,
+      }
+    );
   },
 };
