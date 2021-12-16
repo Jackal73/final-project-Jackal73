@@ -23,16 +23,15 @@ export default {
     return trails.findOne({ _id: objectId(id) });
   },
 
-  // Update a trail
-  async update(id, trail) {
+  // Update a trail - user id in request, trail id in json.
+  update(id, body) {
     const trailQuery = {
       _id: objectId(id),
-      "trails._id": objectId(trail.id),
     };
     const upTrail = {
-      $set: { trails: trail },
+      $set: { trails: body },
     };
-    return trail.updateOne(trailQuery, upTrail);
+    return trails.updateOne(trailQuery, upTrail);
   },
 
   // Delete a trail by Id
