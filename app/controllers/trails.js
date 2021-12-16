@@ -22,6 +22,7 @@ export default {
   show(id) {
     return trails.findOne({ _id: objectId(id) });
   },
+
   // Update a trail
   async update(id, trail) {
     const trailQuery = {
@@ -33,5 +34,9 @@ export default {
     };
     return trail.updateOne(trailQuery, upTrail);
   },
+
+  // Delete a trail by Id
+  delete(id) {
+    return trails.deleteOne({ _id: objectId(id) });
   },
 };

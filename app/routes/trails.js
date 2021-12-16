@@ -18,9 +18,10 @@ router.post("/all", async ({ isAuth }, res) => {
     res.status(401).json({ message: "Access Denied" });
   }
 });
+
 // Add a new trail
 router.post("/", async ({ isAuth, body }, res) => {
-    try {
+  try {
     if (isAuth?.role === "PRO") {
       const trail = new Trail(body);
       const errors = trail.validate();
@@ -34,10 +35,11 @@ router.post("/", async ({ isAuth, body }, res) => {
     } else {
       throw new Error("You are not authorized to perform this action");
     }
-    } catch ({ message }) {
-      res.status(400).json({ message });
+  } catch ({ message }) {
+    res.status(400).json({ message });
   }
 });
+
 // Get a trail by id
 router.post("/:id", async ({ isAuth, params }, res) => {
   // if request is properly authorized...
@@ -52,6 +54,7 @@ router.post("/:id", async ({ isAuth, params }, res) => {
     res.status(401).json({ message: "Access Denied" });
   }
 });
+
 // Update a trail by id
 router.put("/:id", async ({ isAuth, body, params }, res) => {
   if (isAuth?.role === "PRO") {
@@ -63,4 +66,20 @@ router.put("/:id", async ({ isAuth, body, params }, res) => {
     }
   }
 });
+
+// Delete a trail by id
+router.delete("/:id", async ({ isAuth, params }, res) => {
+  // if request is properly authorized...
+  if (isAuth?.role === "PRO") {
+    try {
+      const delTrail = await trailsController.delete(params.id);
+      res.json(delTrail);
+    } catch ({ message }) {
+      res.status(500).json({ message });
+    }
+  } else {
+    res.status(401).json({ message: "Access Denied" });
+  }
+});
+
 export default router;
