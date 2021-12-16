@@ -55,12 +55,11 @@ The password will be encrypted.
 
 ```json
 {
-  "trail name": "grand canyon trail",
+  "trailName": "grand canyon trail",
   "state": "New Jersey",
   "distance": "3.2 miles",
   "difficulty": "moderate",
-  "terrain": "river bed",
-  "notes": "saw 2 water snakes, 1 squirrel. Hike was beautiful."
+  "terrain": "river bed"
 }
 ```
 
