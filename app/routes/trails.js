@@ -38,6 +38,15 @@ router.post("/", async ({ isAuth, body }, res) => {
       res.status(400).json({ message });
   }
 });
+// Get a trail by id
+router.post("/:id", async ({ isAuth, params }, res) => {
+  // if request is properly authorized...
+  if (isAuth?.role === "PRO") {
+    try {
+      const trail = await trailsController.show(params.id);
+      res.json(trail);
+    } catch ({ message }) {
+      res.status(500).json({ message });
     }
   } else {
     res.status(401).json({ message: "Access Denied" });

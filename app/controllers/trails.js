@@ -18,8 +18,9 @@ export default {
     return { insertedId };
   },
 
-export default {
-  create(newTrails) {
-    return trailsClient.insertOne(newTrails);
+  // Get a trail by Id
+  show(id) {
+    return trails.findOne({ _id: objectId(id) });
+  },
   },
 };
