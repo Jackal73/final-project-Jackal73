@@ -85,7 +85,7 @@ All routes will be JWT protected after proHiker authentication.
 `POST` - `trails`
 `POST` - `trails/:id`
 `PUT` - `trails/:id`
-`DELETE` - trails/:id
+`DELETE` - `trails/:id`
 
 ## _Data_
 
