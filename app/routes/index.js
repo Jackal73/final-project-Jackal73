@@ -1,6 +1,6 @@
 import { Router } from "express";
-import proHikerRouter from "./proHiker.js";
-import hikerRouter from "./hiker.js";
+import proHikerRouter from "./hiker.js";
+import hikerRouter from "./proHiker.js";
 
 const router = new Router();
 
