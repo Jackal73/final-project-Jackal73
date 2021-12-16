@@ -65,6 +65,19 @@ Sample for inputs - add info
 }
 ```
 
+Data for update trail
+
+```json
+{
+  "id": "61bb5c0e376c9a19ef7fd662",
+  "trailName": "grand canyon trail",
+  "state": "New Joisey",
+  "distance": "5.2 miles",
+  "difficulty": "hard",
+  "terrain": "flower bed"
+}
+```
+
 ## _Routes_
 
 All routes will have '/api' preface.
