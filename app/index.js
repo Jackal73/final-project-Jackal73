@@ -9,6 +9,9 @@ app.get("/", (_, res) => {
   res.send("Hello World!");
 });
 
+// Middleware - allows express to read json requests
+app.use(express.json());
+
 // Middleware - starts the router
 app.use("/api", router);
 
