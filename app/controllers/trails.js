@@ -1,5 +1,9 @@
 import client from "../client.js";
 import config from "../config.js";
+export default {
+  index() {
+    return trails.find().toArray();
+  },
 
 const trailsClient = client.db(config.db.name).collection("trails");
 
