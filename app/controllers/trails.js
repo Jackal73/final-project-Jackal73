@@ -22,5 +22,16 @@ export default {
   show(id) {
     return trails.findOne({ _id: objectId(id) });
   },
+  // Update a trail
+  async update(id, trail) {
+    const trailQuery = {
+      _id: objectId(id),
+      "trails._id": objectId(trail.id),
+    };
+    const upTrail = {
+      $set: { trails: trail },
+    };
+    return trail.updateOne(trailQuery, upTrail);
+  },
   },
 };

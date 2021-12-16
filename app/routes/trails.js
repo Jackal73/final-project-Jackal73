@@ -52,4 +52,15 @@ router.post("/:id", async ({ isAuth, params }, res) => {
     res.status(401).json({ message: "Access Denied" });
   }
 });
+// Update a trail by id
+router.put("/:id", async ({ isAuth, body, params }, res) => {
+  if (isAuth?.role === "PRO") {
+    try {
+      const upTrail = await trailsController.update(params.id, body);
+      res.status(200).json(upTrail);
+    } catch ({ message }) {
+      res.status(500).json({ message });
+    }
+  }
+});
 export default router;
