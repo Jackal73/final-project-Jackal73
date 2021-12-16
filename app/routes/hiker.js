@@ -7,13 +7,17 @@ router.get("/", (_, res) => {
   res.send("Hello Hiking World!");
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async ({ isAuth }, res) => {
   // if request is properly authorized...
-  if (req.isAuth) {
-    const hikers = await hikerController.index();
+  if (isAuth?.role === "PROHIKER") {
+    try {
+      const hikers = await hikerController.index();
 
-    // Get list of hikers
-    res.json(hikers);
+      // Get list of hikers
+      res.json(hikers);
+    } catch ({ message }) {
+      res.status(500).json({ message });
+    }
   } else {
     res.status(401).json({ message: "Access Denied" });
   }
